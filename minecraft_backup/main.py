@@ -41,7 +41,7 @@ def main():
 
     # Config Commands
     parser_config = subparser.add_parser(
-        "config", help="You can change or check the config of backup management"
+        "config", help="You can change or check the config of backup management `config -h`"
     )
     parser_config.set_defaults(handler=commands.config)
 
