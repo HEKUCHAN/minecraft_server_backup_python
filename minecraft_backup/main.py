@@ -43,6 +43,19 @@ def main():
     parser_config = subparser.add_parser(
         "config", help="Change the config of backup management"
     )
+    parser_config.set_defaults(handler=commands.config)
+
+    parser_config.add_argument(
+        "--logspath", help="You can change the path of logs. (Default path is the Minecraft directory) Warning! When you use this command you will be lost your log data. I recommend saving the files if you need to do it before doing it."
+    )
+
+    parser_config.add_argument(
+        "--deletetarget", help="Setting of auto delete target. Example: 7d,00h,00m,00s (Default 7d)"
+    )
+
+    parser_config.add_argument(
+        "--autodelete", help="You can turn off/on auto delete."
+    )
 
     args = parser.parse_args()
     if hasattr(args, "handler"):
