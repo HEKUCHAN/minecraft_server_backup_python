@@ -3,14 +3,7 @@ import os
 import sys
 import argparse
 
-
-def command_backup(args):
-    print(args, "backup!!")
-
-
-def command_log_clear(args):
-    print(args, "clear!!")
-
+from . import commands
 
 def main():
     parser = argparse.ArgumentParser(
@@ -26,7 +19,7 @@ def main():
     parser_backup = subparser.add_parser(
         "backup", help="Command to backup your minecraft folder. see `backup -h`"
     )
-    parser_backup.set_defaults(handler=command_backup)
+    parser_backup.set_defaults(handler=commands.backup)
 
     parser_backup.add_argument(
         "minecraft_folder", help="Write the Minecraft folder path."
@@ -44,7 +37,7 @@ def main():
     parser_log = subparser.add_parser(
         "clear", help="Clear the all logs of buckup. see `clear -h`"
     )
-    parser_log.set_defaults(handler=command_log_clear)
+    parser_log.set_defaults(handler=commands.clear)
 
     # Config Commands
     parser_config = subparser.add_parser(
