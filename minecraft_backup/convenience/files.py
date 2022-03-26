@@ -20,6 +20,7 @@ class CompressType(IntEnum):
     TAR = 2
     TAR_AND_ZIP = 4
 
+
 class Files(Generic[T]):
     def __init__(
         self,
@@ -60,28 +61,28 @@ class Files(Generic[T]):
                 self.backup_folder
                 / f"{self.minecraft_folder.name}_{now.strftime('%Y-%m-%d_%Hh-%Mm-%Ss')}",
                 "zip",
-                root_dir=self.minecraft_folder
+                root_dir=self.minecraft_folder,
             )
         elif self.compress_type == CompressType.TAR:
             shutil.make_archive(
                 self.backup_folder
                 / f"{self.minecraft_folder.name}_{now.strftime('%Y-%m-%d_%Hh-%Mm-%Ss')}",
                 "gztar",
-                root_dir=self.minecraft_folder
+                root_dir=self.minecraft_folder,
             )
         elif self.compress_type == CompressType.TAR_AND_ZIP:
             shutil.make_archive(
                 self.backup_folder
                 / f"{self.minecraft_folder.name}_{now.strftime('%Y-%m-%d_%Hh-%Mm-%Ss')}",
                 "gztar",
-                root_dir=self.minecraft_folder
+                root_dir=self.minecraft_folder,
             )
 
             shutil.make_archive(
                 self.backup_folder
                 / f"{self.minecraft_folder.name}_{now.strftime('%Y-%m-%d_%Hh-%Mm-%Ss')}",
                 "zip",
-                root_dir=self.minecraft_folder
+                root_dir=self.minecraft_folder,
             )
 
     @classmethod
