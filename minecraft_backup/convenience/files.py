@@ -6,6 +6,8 @@ from pathlib import Path
 from enum import IntEnum
 from typing import TypeVar, Generic, Dict, Union
 
+from . import logger
+
 T = TypeVar("T")
 
 
@@ -56,6 +58,7 @@ class File(Generic[T]):
                 self.backup_folder
                 / f"{self.minecraft_folder.name}_{now.strftime('%Y-%m-%d_%Hh-%Mm-%Ss')}",
             )
+            logger.info(f"{self.minecraft_folder.name}: Backup none compress at {self.backup_folder}")
         elif self.compress_type == CompressType.ZIP:
             shutil.make_archive(
                 self.backup_folder
@@ -63,6 +66,8 @@ class File(Generic[T]):
                 "zip",
                 root_dir=self.minecraft_folder,
             )
+            logger.info(
+                f"{self.minecraft_folder.name}: Backup zip compress at {self.backup_folder}")
         elif self.compress_type == CompressType.TAR:
             shutil.make_archive(
                 self.backup_folder
@@ -70,6 +75,8 @@ class File(Generic[T]):
                 "gztar",
                 root_dir=self.minecraft_folder,
             )
+            logger.info(
+                f"{self.minecraft_folder.name}: Backup tar.gz compress at {self.backup_folder}")
         elif self.compress_type == CompressType.TAR_AND_ZIP:
             shutil.make_archive(
                 self.backup_folder
@@ -84,6 +91,9 @@ class File(Generic[T]):
                 "zip",
                 root_dir=self.minecraft_folder,
             )
+
+            logger.info(
+                f"{self.minecraft_folder.name}: Backup zip and tar.gz compress at {self.backup_folder}")
 
     @classmethod
     def is_can_backup(
