@@ -4,6 +4,7 @@ import textwrap
 import datetime
 from pathlib import Path
 from enum import IntEnum
+from fabric.colors import green
 from typing import TypeVar, Generic, Dict, Union
 
 from . import logger
@@ -61,6 +62,7 @@ class File(Generic[T]):
             logger.info(
                 f"{self.minecraft_folder.name}: Backup none compress at {self.backup_folder}"
             )
+            print(green("Success to create backup none compressed!"))
         elif self.compress_type == CompressType.ZIP:
             shutil.make_archive(
                 self.backup_folder
@@ -71,6 +73,7 @@ class File(Generic[T]):
             logger.info(
                 f"{self.minecraft_folder.name}: Backup zip compress at {self.backup_folder}"
             )
+            print(green("Success to create backup and compressed to zip!"))
         elif self.compress_type == CompressType.TAR:
             shutil.make_archive(
                 self.backup_folder
@@ -81,6 +84,7 @@ class File(Generic[T]):
             logger.info(
                 f"{self.minecraft_folder.name}: Backup tar.gz compress at {self.backup_folder}"
             )
+            print(green("Success to create backup and compressed to tar.gz!"))
         elif self.compress_type == CompressType.TAR_AND_ZIP:
             shutil.make_archive(
                 self.backup_folder
@@ -99,6 +103,7 @@ class File(Generic[T]):
             logger.info(
                 f"{self.minecraft_folder.name}: Backup zip and tar.gz compress at {self.backup_folder}"
             )
+            print(green("Success to create backup and compressed to zip/tar.gz"))
 
     @classmethod
     def is_can_backup(
