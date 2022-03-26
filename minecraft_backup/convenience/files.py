@@ -1,4 +1,5 @@
 import os
+import shutil
 import textwrap
 from pathlib import Path
 from typing import TypeVar, Generic, Dict, Union
@@ -10,11 +11,14 @@ class Files(Generic[T]):
     def __init__(
         self, minecraft_folder: Union[str, Path], backup_folder: Union[str, Path], is_no_log: bool
     ):
-        if type(minecraft_folder) == str or type(backup_folder) == str:
+        if type(minecraft_folder) == str:
             minecraft_folder = Path(minecraft_folder).resolve()
-            backup_folder = Path(backup_folder).resolve()
         else:
             minecraft_folder = minecraft_folder.resolve()
+
+        if type(backup_folder) == str:
+            backup_folder = Path(backup_folder).resolve()
+        else:
             backup_folder = backup_folder.resolve()
 
         if minecraft_folder == backup_folder:
@@ -26,18 +30,21 @@ class Files(Generic[T]):
         self.backup_folder: Union[str, Path] = backup_folder
         self.is_no_log: bool = is_no_log
 
-    def backup_folder(self):
+    def backup(self):
         pass
 
     @classmethod
     def is_can_backup(
         cls, minecraft_folder: Union[str, Path], backup_folder: Union[str, Path]
     ) -> Dict[bool, str]:
-        if type(minecraft_folder) == str or type(backup_folder) == str:
+        if type(minecraft_folder) == str:
             minecraft_folder = Path(minecraft_folder).resolve()
-            backup_folder = Path(backup_folder).resolve()
         else:
             minecraft_folder = minecraft_folder.resolve()
+
+        if type(backup_folder) == str:
+            backup_folder = Path(backup_folder).resolve()
+        else:
             backup_folder = backup_folder.resolve()
 
         # Check to avoid the same files.
