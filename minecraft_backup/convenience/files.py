@@ -1,15 +1,32 @@
 import os
 import shutil
 import textwrap
+import datetime
 from pathlib import Path
+from enum import IntEnum
 from typing import TypeVar, Generic, Dict, Union
 
 T = TypeVar("T")
 
 
+t_delta = datetime.timedelta(hours=9)
+JST = datetime.timezone(t_delta, "JST")
+now = datetime.datetime.now(JST)
+
+
+class CompressType(IntEnum):
+    NONE = 0
+    ZIP = 1
+    TAR = 2
+
+
 class Files(Generic[T]):
     def __init__(
-        self, minecraft_folder: Union[str, Path], backup_folder: Union[str, Path], is_no_log: bool
+        self,
+        minecraft_folder: Union[str, Path],
+        backup_folder: Union[str, Path],
+        compress_type: CompressType,
+        is_no_log: bool,
     ):
         if type(minecraft_folder) == str:
             minecraft_folder = Path(minecraft_folder).resolve()
@@ -29,9 +46,31 @@ class Files(Generic[T]):
         self.minecraft_folder: Union[str, Path] = minecraft_folder
         self.backup_folder: Union[str, Path] = backup_folder
         self.is_no_log: bool = is_no_log
+        self.compress_type: CompressType = compress_type
 
     def backup(self):
-        pass
+        if self.compress_type == CompressType.NONE:
+            shutil.copytree(
+                self.minecraft_folder,
+                self.backup_folder
+                / f"{self.minecraft_folder.name}_{now.strftime('%Y-%m-%d_%Hh-%Mm-%Ss')}",
+            )
+        elif self.compress_type == CompressType.ZIP:
+            shutil.make_archive(
+                self.backup_folder
+                / f"{self.minecraft_folder.name}_{now.strftime('%Y-%m-%d_%Hh-%Mm-%Ss')}",
+                "zip",
+                root_dir=self.minecraft_folder,
+                base_dir=self.minecraft_folder.name
+            )
+        elif self.compress_type == CompressType.TAR:
+            shutil.make_archive(
+                self.backup_folder
+                / f"{self.minecraft_folder.name}_{now.strftime('%Y-%m-%d_%Hh-%Mm-%Ss')}",
+                "tar",
+                root_dir=self.minecraft_folder,
+                base_dir=self.minecraft_folder.name
+            )
 
     @classmethod
     def is_can_backup(

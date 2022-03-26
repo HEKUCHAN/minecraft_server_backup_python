@@ -33,6 +33,18 @@ def main():
         "--no-log", help="Mode to not save the backup log.", action="store_true"
     )
 
+    parser_backup_group = parser_backup.add_mutually_exclusive_group()
+    parser_backup_group.add_argument(
+        "-z", "--zip", help="Mode to save and compress in zip", action="store_true"
+    )
+
+    parser_backup_group.add_argument(
+        "-t",
+        "--tar",
+        help="Mode to save and compress in tgz/tar.gz",
+        action="store_true",
+    )
+
     # log Commands
     parser_log: argparse.ArgumentParser = subparser.add_parser(
         "clear", help="Clear the all logs of buckup. see `clear -h`"
@@ -42,7 +54,7 @@ def main():
     # Config Commands
     parser_config: argparse.ArgumentParser = subparser.add_parser(
         "config",
-        help="You can change or check the config of backup management `config -h`",
+        help="You can change or check the config of backup management. see `config -h`",
     )
     parser_config.set_defaults(handler=commands.config)
 
