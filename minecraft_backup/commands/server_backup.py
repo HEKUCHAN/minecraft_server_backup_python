@@ -12,6 +12,8 @@ def backup(args):
         COMPRESS_TYPE: CompressType = CompressType.ZIP
     elif args.tar:
         COMPRESS_TYPE: CompressType = CompressType.TAR
+    elif args.tar_zip:
+        COMPRESS_TYPE: CompressType = CompressType.TAR_AND_ZIP
     else:
         COMPRESS_TYPE: CompressType = CompressType.NONE
 

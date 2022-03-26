@@ -41,7 +41,14 @@ def main():
     parser_backup_group.add_argument(
         "-t",
         "--tar",
-        help="Mode to save and compress in tgz/tar.gz",
+        help="Mode to save and compress to tgz/tar.gz",
+        action="store_true",
+    )
+
+    parser_backup_group.add_argument(
+        "-tz",
+        "--tar-zip",
+        help="Mode to save and compress to zip and tgz/tar.gz",
         action="store_true",
     )
 
