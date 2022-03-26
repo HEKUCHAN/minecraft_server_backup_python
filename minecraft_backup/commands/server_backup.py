@@ -1,6 +1,6 @@
 import pathlib
 from fabric.colors import red
-from minecraft_backup.convenience.files import Files, CompressType
+from minecraft_backup.convenience.files import File, CompressType
 
 
 def backup(args):
@@ -17,12 +17,10 @@ def backup(args):
     else:
         COMPRESS_TYPE: CompressType = CompressType.NONE
 
-    is_can_backup_result = Files.is_can_backup(
-        MINECRAFT_FOLDER_PATH, BACKUP_FOLDER_PATH
-    )
+    is_can_backup_result = File.is_can_backup(MINECRAFT_FOLDER_PATH, BACKUP_FOLDER_PATH)
 
     if is_can_backup_result["result"]:
-        files: Files = Files(
+        files: File = File(
             MINECRAFT_FOLDER_PATH, BACKUP_FOLDER_PATH, COMPRESS_TYPE, IS_NO_LOG
         )
     else:

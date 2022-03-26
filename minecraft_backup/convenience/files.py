@@ -21,7 +21,7 @@ class CompressType(IntEnum):
     TAR_AND_ZIP = 4
 
 
-class Files(Generic[T]):
+class File(Generic[T]):
     def __init__(
         self,
         minecraft_folder: Union[str, Path],
