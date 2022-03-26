@@ -8,7 +8,7 @@ T = TypeVar("T")
 
 class Files(Generic[T]):
     def __init__(
-        self, minecraft_folder: Union[str, Path], backup_folder: Union[str, Path]
+        self, minecraft_folder: Union[str, Path], backup_folder: Union[str, Path], is_no_log: bool
     ):
         if type(minecraft_folder) == str or type(backup_folder) == str:
             minecraft_folder = Path(minecraft_folder).resolve()
@@ -24,6 +24,10 @@ class Files(Generic[T]):
 
         self.minecraft_folder: Union[str, Path] = minecraft_folder
         self.backup_folder: Union[str, Path] = backup_folder
+        self.is_no_log: bool = is_no_log
+
+    def backup_folder(self):
+        pass
 
     @classmethod
     def is_can_backup(
