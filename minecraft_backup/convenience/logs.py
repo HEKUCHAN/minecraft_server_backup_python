@@ -1,10 +1,9 @@
 import os
 import json
-import minecraft_backup
-from minecraft_backup.config import *
 from pathlib import Path
 from typing import TypeVar, Generic
 from logging import getLogger, config, Logger
+from minecraft_backup.config import LOG_CONFIG_PATH, LOG_FILE_PATH
 
 T = TypeVar("T")
 
