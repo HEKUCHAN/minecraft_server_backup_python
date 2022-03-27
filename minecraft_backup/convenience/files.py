@@ -59,9 +59,10 @@ class File(Generic[T]):
                 self.backup_folder
                 / f"{self.minecraft_folder.name}_{now.strftime('%Y-%m-%d_%Hh-%Mm-%Ss')}",
             )
-            logger.info(
-                f"{self.minecraft_folder.name}: Backup none compress at {self.backup_folder}"
-            )
+            if self.is_no_log:
+                logger.info(
+                    f"{self.minecraft_folder.name}: Backup none compress at {self.backup_folder}"
+                )
             print(green("Success to create backup none compressed!"))
         elif self.compress_type == CompressType.ZIP:
             shutil.make_archive(
@@ -70,9 +71,10 @@ class File(Generic[T]):
                 "zip",
                 root_dir=self.minecraft_folder,
             )
-            logger.info(
-                f"{self.minecraft_folder.name}: Backup zip compress at {self.backup_folder}"
-            )
+            if self.is_no_log:
+                logger.info(
+                    f"{self.minecraft_folder.name}: Backup zip compress at {self.backup_folder}"
+                )
             print(green("Success to create backup and compressed to zip!"))
         elif self.compress_type == CompressType.TAR:
             shutil.make_archive(
@@ -81,9 +83,10 @@ class File(Generic[T]):
                 "gztar",
                 root_dir=self.minecraft_folder,
             )
-            logger.info(
-                f"{self.minecraft_folder.name}: Backup tar.gz compress at {self.backup_folder}"
-            )
+            if self.is_no_log:
+                logger.info(
+                    f"{self.minecraft_folder.name}: Backup tar.gz compress at {self.backup_folder}"
+                )
             print(green("Success to create backup and compressed to tar.gz!"))
         elif self.compress_type == CompressType.TAR_AND_ZIP:
             shutil.make_archive(
@@ -100,9 +103,10 @@ class File(Generic[T]):
                 root_dir=self.minecraft_folder,
             )
 
-            logger.info(
-                f"{self.minecraft_folder.name}: Backup zip and tar.gz compress at {self.backup_folder}"
-            )
+            if self.is_no_log:
+                logger.info(
+                    f"{self.minecraft_folder.name}: Backup zip and tar.gz compress at {self.backup_folder}"
+                )
             print(green("Success to create backup and compressed to zip/tar.gz"))
 
     @classmethod

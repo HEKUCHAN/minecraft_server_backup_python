@@ -30,7 +30,7 @@ def main():
     )
 
     parser_backup.add_argument(
-        "--no-log", help="Mode to not save the backup log.", action="store_true"
+        "--no-log", help="Mode to don't save the backup log.", action="store_true"
     )
 
     parser_backup_group = parser_backup.add_mutually_exclusive_group()
@@ -66,16 +66,27 @@ def main():
     parser_config.set_defaults(handler=commands.config)
 
     parser_config.add_argument(
+        "-lg",
         "--logs-path",
         help="You can change the path of logs. (Default path is the Minecraft directory) Warning! When you use this command you will be lost your log data. I recommend saving the files if you need to do it before doing it.",
     )
 
     parser_config.add_argument(
+        "-dt",
         "--delete-target",
         help="Setting of auto delete target. Example: 7d,00h,00m,00s (Default 7d)",
     )
 
-    parser_config.add_argument("--autodelete", help="You can turn off/on auto delete.")
+    parser_config.add_argument(
+        "-ad",
+        "--auto-delete",
+        help="You can turn off/on auto delete.",
+        action="store_true",
+    )
+
+    parser_config.add_argument(
+        "--no-log", help="Mode to don't save the config log.", action="store_true"
+    )
 
     args = parser.parse_args()
 

@@ -1,0 +1,6 @@
+{
+    "version": 1,
+    "logs_path": "default",
+    "delete_target": null,
+    "auto_delete": true
+}
