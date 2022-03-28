@@ -35,7 +35,7 @@ def main():
 
     parser_backup_group = parser_backup.add_mutually_exclusive_group()
     parser_backup_group.add_argument(
-        "-z", "--zip", help="Mode to save and compress in zip", action="store_true"
+        "-z", "--zip", help="Mode to save and compress to zip", action="store_true"
     )
 
     parser_backup_group.add_argument(
