@@ -74,7 +74,7 @@ None
 | Normal | Short | Description | Default | Positional arguments |
 | ------ | ----- | ------------| ------- | ---------- |
 | --help | -h | show help message. | None | None |
-| --logs-path | -lg | You can change the path of logs. | minecraft_backup.\_\_path\_\_/data/user_config.json | new log file path \*1 |
+| --logs-path | -lg | You can change the path of logs. | minecraft_backup.\_\_path\_\_/data/user_config.json | new path to log file \*1 |
 | --delete-target | -dt | Backup file expiration date | 7d | expiration date \*2 |
 | --auto-delete | -ad | You can turn on/off auto delete | ON | NONE |
 | --no-log | None | Mode to don't save the config log | None | None |
