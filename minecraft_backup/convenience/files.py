@@ -8,9 +8,8 @@ from pathlib import Path
 from enum import IntEnum
 from .user_config import Config
 from fabric.colors import green
+from datetime import datetime, timedelta
 from typing import TypeVar, Generic, Dict, Union
-from datetime import datetime, timedelta, timezone
-
 from . import logger
 
 T = TypeVar("T")

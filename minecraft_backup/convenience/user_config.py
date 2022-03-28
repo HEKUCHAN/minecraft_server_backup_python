@@ -1,12 +1,9 @@
 import os
 import json
-from typing import TypeVar, Generic
 from minecraft_backup.config import USER_CONFIG_FILE_PATH
 
-T = TypeVar("T")
 
-
-class Config(Generic[T]):
+class Config:
     @classmethod
     def save_json_file(cls, json_file):
         with open(USER_CONFIG_FILE_PATH, "w") as f:

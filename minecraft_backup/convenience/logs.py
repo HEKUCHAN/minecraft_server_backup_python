@@ -1,11 +1,9 @@
 import os
 import json
-from typing import TypeVar, Generic
+from typing import TypeVar
 from logging import getLogger, config, Logger
 from minecraft_backup.convenience.user_config import Config
 from minecraft_backup.config import LOG_CONFIG_PATH, LOG_FILE_PATH
-
-T = TypeVar("T")
 
 if Config.is_user_changed_logs_path_config():
     LOG_CONFIG_PATH = Config.get_logs_path()
