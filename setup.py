@@ -7,7 +7,7 @@ long_description = (this_dir / "README.md").read_text()
 
 setup(
     name="minecraft_backup",
-    version="0.1.0",
+    version="1.0.0",
     packages=find_packages(),
     python_requires=">=3.6.8",
     entry_points={"console_scripts": {"minecraft-backup=minecraft_backup.main:main"}},
