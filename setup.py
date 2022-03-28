@@ -25,7 +25,7 @@ setup(
     url="https://github.com/HEKUCHAN/minecraft_server_backup_python",
     classifiers=[
         "Development Status :: 1 - Planning",
-        "Intended Audience :: Environment :: Console",
+        "Environment :: Console",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
         "Operating System :: Microsoft :: Windows :: Windows 10",
