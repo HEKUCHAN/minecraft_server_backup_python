@@ -77,4 +77,4 @@ None
 
 \*1 When you use this command you will be lost your log data. I recommend saving the files if you need to do it before doing it.
 
-\*2 You can setting in `0y7d00h00m00s` (You can just setting to 7d)
+\*2 You can setting in `0y7d00h00m00s` (Or You can just setting to `7d`)
