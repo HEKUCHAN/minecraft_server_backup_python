@@ -16,7 +16,7 @@ $ pip install miencraft_backup
 $ minecraft-backup [-h] {backup,clear,config} ...
 ```
 
-## Commands
+# Commands
 
 Description of all Commands.
 
