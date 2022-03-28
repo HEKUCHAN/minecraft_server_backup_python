@@ -1,5 +1,6 @@
 import pathlib
 from fabric.colors import red
+from minecraft_backup.convenience.user_config import Config
 from minecraft_backup.convenience.files import File, CompressType
 
 
@@ -28,4 +29,6 @@ def backup(args):
         return
 
     files.backup()
-    files.auto_delete()
+
+    if Config.get_auto_delete:
+        files.auto_delete()
