@@ -1,20 +1,22 @@
+import re
 import os
+import stat
+import glob
 import shutil
 import textwrap
-import datetime
 from pathlib import Path
 from enum import IntEnum
+from .user_config import Config
 from fabric.colors import green
 from typing import TypeVar, Generic, Dict, Union
+from datetime import datetime, timedelta, timezone
 
 from . import logger
 
 T = TypeVar("T")
 
 
-t_delta = datetime.timedelta(hours=9)
-JST = datetime.timezone(t_delta, "JST")
-now = datetime.datetime.now(JST)
+now = datetime.now()
 
 
 class CompressType(IntEnum):
@@ -109,6 +111,82 @@ class File(Generic[T]):
                 )
             print(green("Success to create backup and compressed to zip/tar.gz"))
 
+    def auto_delete(self):
+        file_target = Config.get_delete_target()
+        times_list = []
+        match_list = [
+            "[0-9]{,2}y",
+            "[0-9]{,2}d",
+            "[0-9]{,2}h",
+            "[0-9]{,2}m",
+            "[0-9]{,2}s",
+        ]
+
+        for match in match_list:
+            matched_string = re.findall(match, file_target)
+
+            if len(matched_string) != 0:
+                file_target = file_target.replace(matched_string[0], "")
+                times_list.append(int(matched_string[0][:-1]))
+            else:
+                times_list.append(0)
+
+        year, day, hours, minutes, seconds = times_list
+
+        target_date = timedelta(
+            days=(year * 365) + day,
+            hours=hours,
+            minutes=minutes,
+            seconds=seconds,
+            microseconds=0,
+            milliseconds=0,
+            weeks=0,
+        )
+
+        backup_files = self.get_backup_files()
+        files_date = self.filename_to_date(backup_files)
+
+        for file_date in files_date:
+            file_path, target_file_date = file_date
+
+            if (now - target_date) > target_file_date:
+                if os.path.isdir(file_path):
+                    self._rmtree(file_path)
+                else:
+                    os.remove(file_path)
+
+                print(green("Delete old backup:"), file_path)
+
+    def filename_to_date(self, *files: str):
+        for file in files[0]:
+            file_date = file.split(".")[0].replace(
+                str(self.backup_folder / self.minecraft_folder.name) + "_", ""
+            )
+
+            file_date = datetime.strptime(file_date, "%Y-%m-%d_%Hh-%Mm-%Ss")
+
+            yield (file, file_date)
+
+    def get_backup_files(self) -> list:
+        backup_folder_files = glob.glob(str(self.backup_folder / "*"))
+        verified_backup_folder_files = [
+            str(backup_folder_file)
+            for backup_folder_file in backup_folder_files
+            if self.minecraft_folder.name in backup_folder_file
+        ]
+
+        return verified_backup_folder_files
+
+    def _rmtree(self, top):
+        for root, dirs, files in os.walk(top, topdown=False):
+            for name in files:
+                filename = os.path.join(root, name)
+                os.chmod(filename, stat.S_IWUSR)
+                os.remove(filename)
+            for name in dirs:
+                os.rmdir(os.path.join(root, name))
+        os.rmdir(top)
+
     @classmethod
     def is_can_backup(
         cls, minecraft_folder: Union[str, Path], backup_folder: Union[str, Path]
@@ -164,7 +242,7 @@ class File(Generic[T]):
         return textwrap.dedent(
             f"""\
             MinecraftFolder: {self.minecraft_folder}
-            BackupFolder: {self.backup_folder}
+            BackupFolder: {self.backup_folder}\
             """
         )
 

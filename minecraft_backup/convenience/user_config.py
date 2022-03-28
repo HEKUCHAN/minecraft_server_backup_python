@@ -35,16 +35,24 @@ class Config(Generic[T]):
         cls.save_json_file(setting_file)
 
     @classmethod
+    def get_delete_target(cls):
+        setting_file = cls.get_user_config_json()
+
+        return setting_file["delete_target"]
+
+    @classmethod
     def change_delete_target(cls, delete_target):
         setting_file = cls.get_user_config_json()
         setting_file["delete_target"] = delete_target
 
         cls.save_json_file(setting_file)
 
+    @classmethod
     def is_user_config_changed(cls) -> bool:
         setting_file = cls.get_user_config_json()
         return setting_file["logs_path"].lower() != "default"
 
+    @classmethod
     def get_logs_path(cls):
         setting_file = cls.get_user_config_json()
 

@@ -28,3 +28,4 @@ def backup(args):
         return
 
     files.backup()
+    files.auto_delete()

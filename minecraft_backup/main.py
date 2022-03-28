@@ -74,7 +74,7 @@ def main():
     parser_config.add_argument(
         "-dt",
         "--delete-target",
-        help="Setting of auto delete target. Example: 7d,00h,00m,00s (Default 7d)",
+        help="Setting of auto delete target. Example: `0y7d00h00m00s` (You can just setting to 7d)",
     )
 
     parser_config.add_argument(
