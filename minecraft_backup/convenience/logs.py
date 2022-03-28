@@ -1,6 +1,5 @@
 import os
 import json
-from typing import TypeVar
 from logging import getLogger, config, Logger
 from minecraft_backup.convenience.user_config import Config
 from minecraft_backup.config import LOG_CONFIG_PATH, LOG_FILE_PATH
