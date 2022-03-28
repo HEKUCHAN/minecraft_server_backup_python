@@ -27,7 +27,7 @@ $ minecraft-backup backup [-h] [--no-log] [-z | -t | -tz] minecraft_folder backu
 ```
 
 ### Positional
-| name | description |
+| Name | Description |
 | ---- | ----------- |
 | minecraft_folder | Write the Minecraft folder path. |
 | backup_folder | Write the folder path should you want to save backup. |
