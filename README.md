@@ -64,7 +64,7 @@ None
 ## Config
 This command is to change the config of package.
 ```
-usage: minecraft-backup config [-h] [-lg LOGS_PATH] [-dt DELETE_TARGET] [-ad] [--no-log]
+$ minecraft-backup config [-h] [-lg LOGS_PATH] [-dt DELETE_TARGET] [-ad] [--no-log]
 ```
 
 ### Positional
