@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import argparse
 from . import commands
+from fabric.colors import red
 
 
 def main():
@@ -68,7 +69,9 @@ def main():
     parser_config.add_argument(
         "-lg",
         "--logs-path",
-        help="You can change the path of logs. (Default path is the Minecraft directory) Warning! When you use this command you will be lost your log data. I recommend saving the files if you need to do it before doing it.",
+        help="You can change the path of logs. (Default path is minecraft_backup.__path__/data/user_config.json) {}".format(
+            red('Warning! When you use this command you will be lost your log data. I recommend saving the files if you need to do it before doing it. ')
+        )
     )
 
     parser_config.add_argument(
