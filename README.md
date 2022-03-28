@@ -33,7 +33,7 @@ $ minecraft-backup backup [-h] [--no-log] [-z | -t | -tz] minecraft_folder backu
 | backup_folder | Write the folder path should you want to save backup. |
 
 ### Options
-| normal | short | description |
+| Normal | Short | Description |
 | ------ | ----- | ------------|
 | --help | -h | show help message. |
 | --no-log | None | Mode to don't save the backup log. |
@@ -51,9 +51,22 @@ $ minecraft-backup clear [-h]
 None
 
 ### Options
-| normal | short | description |
+| Normal | Short | Description |
 | ------ | ----- | ------------|
 | --help | -h | show help message. |
 
 ## Config
+This command is to change the config of package.
+```
+usage: minecraft-backup config [-h] [-lg LOGS_PATH] [-dt DELETE_TARGET] [-ad] [--no-log]
+```
+
+### Positional
+None
+
+### Options
+| Normal | Short | Description | Default |
+| ------ | ----- | ------------|
+| --help | -h | show help message. |
+| --logs-path | -lg | You can change the path of logs. |
 
