@@ -39,3 +39,19 @@ $ minecraft-backup backup [-h] [--no-log] [-z | -t | -tz] minecraft_folder backu
 | -tar | -t | Mode to save and compress to tgz/tar.gz |
 | -tar-zip | -tz | Mode to save and compress to zip and tgz/tar.gz |
 
+### Clear
+This command is to delete all logs of backup history.
+```
+$ minecraft-backup clear [-h]
+```
+
+#### Positional
+None
+
+##### Options
+| normal | short | description |
+| ------ | ----- | ------------|
+| --help | -h | show help message. |
+
+### Config
+
