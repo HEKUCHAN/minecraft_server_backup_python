@@ -22,7 +22,7 @@ setup(
     """),
     author="Heitor Hirose",
     author_email="Heitorhirose@gmail.com",
-    url="https://github.com/HEKUCHAN/minecraft_server_buckup_python",
+    url="https://github.com/HEKUCHAN/minecraft_server_backup_python",
     classifiers=[
         "Development Status :: 1 - Planning",
         "Intended Audience :: Environment :: Console",
