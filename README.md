@@ -12,7 +12,7 @@ $ pip install miencraft_backup
 ````
 
 ## How to use
-```bash
+```
 $ minecraft-backup [-h] {backup,clear,config} ...
 ```
 
@@ -20,8 +20,8 @@ $ minecraft-backup [-h] {backup,clear,config} ...
 
 ### Backup
 This command is to backup the folder.
-```bash
-minecraft-backup backup [-h] [--no-log] [-z | -t | -tz] minecraft_folder backup_folder
+```
+$ minecraft-backup backup [-h] [--no-log] [-z | -t | -tz] minecraft_folder backup_folder
 ```
 
 #### Positional
