@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import textwrap
 from pathlib import Path
 from setuptools import setup, find_packages
 
@@ -15,10 +16,10 @@ setup(
             "minecraft-backup=minecraft_backup.main:main"
         }
     },
-    description="""\
+    description=textwrap.dedent("""\
         This is a backup management library for Minecraft servers.
         It should be run and used on a regular basis using cron or similar.
-    """,
+    """),
     author="Heitor Hirose",
     author_email="Heitorhirose@gmail.com",
     url="https://github.com/HEKUCHAN/minecraft_server_buckup_python",
