@@ -26,7 +26,7 @@ def main():
     )
 
     parser_backup.add_argument(
-        "backup_folder", help="Write the folder path should you want save buckup."
+        "backup_folder", help="Write the folder path should you want save backup."
     )
 
     parser_backup.add_argument(
@@ -54,7 +54,7 @@ def main():
 
     # log Commands
     parser_log: argparse.ArgumentParser = subparser.add_parser(
-        "clear", help="Clear the all logs of buckup. see `clear -h`"
+        "clear", help="Clear the all logs of backup. see `clear -h`"
     )
     parser_log.set_defaults(handler=commands.clear)
 
