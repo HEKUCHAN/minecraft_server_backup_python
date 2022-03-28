@@ -1,6 +1,12 @@
 # Minecraft Backup
+[![Python Versions](https://img.shields.io/pypi/pyversions/minecraft-backup.svg)](https://pypi.org/project/minecraft-backup)
+![PyPI - Wheel](https://img.shields.io/pypi/wheel/minecraft-backup)
+![PyPI - Implementation](https://img.shields.io/pypi/implementation/minecraft-backup)
+![PyPI - Version](https://img.shields.io/badge/version-1.0.0-blue)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Downloads](https://static.pepy.tech/personalized-badge/minecraft-backup?period=total&units=international_system&left_color=grey&right_color=blue&left_text=Downloads)](https://pepy.tech/project/minecraft-backup)
 
-minecraft-backup is package for Minecraft Servers Backup.
+Minecraft-backup is package to backup Minecraft World data.
 
 To use this package, you need to run it in Therminal.
 
@@ -68,7 +74,7 @@ None
 | Normal | Short | Description | Default | Positional arguments |
 | ------ | ----- | ------------| ------- | ---------- |
 | --help | -h | show help message. | None | None |
-| --logs-path | -lg | You can change the path of logs. | minecraft_backup.__path__/data/user_config.json | new log file path \*1 |
+| --logs-path | -lg | You can change the path of logs. | minecraft_backup.\_\_path\_\_/data/user_config.json | new path to log file \*1 |
 | --delete-target | -dt | Backup file expiration date | 7d | expiration date \*2 |
 | --auto-delete | -ad | You can turn on/off auto delete | ON | NONE |
 | --no-log | None | Mode to don't save the config log | None | None |
