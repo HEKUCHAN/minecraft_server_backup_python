@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Downloads](https://static.pepy.tech/personalized-badge/minecraft-backup?period=total&units=international_system&left_color=grey&right_color=blue&left_text=Downloads)](https://pepy.tech/project/minecraft-backup)
 
-minecraft-backup is package for Minecraft Servers Backup.
+Minecraft-backup is package to backup Minecraft World data.
 
 To use this package, you need to run it in Therminal.
 
