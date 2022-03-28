@@ -48,7 +48,7 @@ class Config(Generic[T]):
         cls.save_json_file(setting_file)
 
     @classmethod
-    def is_user_config_changed(cls) -> bool:
+    def is_user_changed_logs_path_config(cls) -> bool:
         setting_file = cls.get_user_config_json()
         return setting_file["logs_path"].lower() != "default"
 
