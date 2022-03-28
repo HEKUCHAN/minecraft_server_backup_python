@@ -65,8 +65,16 @@ usage: minecraft-backup config [-h] [-lg LOGS_PATH] [-dt DELETE_TARGET] [-ad] [-
 None
 
 ### Options
-| Normal | Short | Description | Default |
-| ------ | ----- | ------------|
-| --help | -h | show help message. |
-| --logs-path | -lg | You can change the path of logs. |
+| Normal | Short | Description | Default | Positional arguments |
+| ------ | ----- | ------------| ------- | ---------- |
+| --help | -h | show help message. | None | None |
+| --logs-path | -lg | You can change the path of logs. | minecraft_backup.__path__/data/user_config.json | new log file path \*1 |
+| --delete-target | -dt | Backup file expiration date | 7d | expiration date \*2 |
+| --auto-delete | -ad | You can turn on/off auto delete | ON | NONE |
+| --no-log | None | Mode to don't save the config log | None | None |
 
+### Warning!
+
+\*1 When you use this command you will be lost your log data. I recommend saving the files if you need to do it before doing it.
+
+\*2 You can setting in `0y7d00h00m00s` (You can just setting to 7d)
