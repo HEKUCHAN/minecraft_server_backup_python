@@ -26,7 +26,7 @@ def main():
     )
 
     parser_backup.add_argument(
-        "backup_folder", help="Write the folder path should you want save backup."
+        "backup_folder", help="Write the folder path should you want to save backup."
     )
 
     parser_backup.add_argument(
