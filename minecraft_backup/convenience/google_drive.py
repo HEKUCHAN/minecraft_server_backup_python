@@ -1,5 +1,6 @@
 import yaml
-from pydrive.auth import GoogleAuth, GoogleDrive
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
 from fabric.colors import red
 from .user_config import Config
 from minecraft_backup.config import PYDRIVE_SETTING_FILE_PATH, PYDRIVE_CREDENTIALS_FILE_PATH
