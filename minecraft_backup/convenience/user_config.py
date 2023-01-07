@@ -6,6 +6,7 @@ from minecraft_backup.config import USER_CONFIG_FILE_PATH
 class Config:
     @classmethod
     def save_json_file(cls, json_file):
+        print(json_file)
         with open(USER_CONFIG_FILE_PATH, "w") as f:
             f.write(json.dumps(json_file))
 
@@ -47,6 +48,7 @@ class Config:
     @classmethod
     def is_user_changed_logs_path_config(cls) -> bool:
         setting_file = cls.get_user_config_json()
+
         return setting_file["logs_path"].lower() != "default"
 
     @classmethod
@@ -61,3 +63,29 @@ class Config:
         setting_file["logs_path"] = path
 
         cls.save_json_file(setting_file)
+
+    @classmethod
+    def get_pydrive_setting_file_path(cls):
+        setting_file = cls.get_user_config_json()
+
+        return setting_file["pydrive_yaml_path"]
+
+    @classmethod
+    def change_pydrive_setting_file_path(cls, path):
+        setting_file = cls.get_user_config_json()
+        setting_file["pydrive_yaml_path"] = str(path)
+
+        cls.save_json_file(setting_file)
+
+    @classmethod
+    def check_google_drive_file(cls) -> bool:
+        setting_file = cls.get_user_config_json()
+        pydrive_setting_file_path = setting_file["pydrive_yaml_path"]
+
+        if not os.path.exists(pydrive_setting_file_path):
+            # 保留:  Please try `config drive --init` to resolve this error.
+            return {
+                "result": False,
+                "message": f"Can't find the pydrive(google drive) settings file."
+            }
+        return { "result": True }

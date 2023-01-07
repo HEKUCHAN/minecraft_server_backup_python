@@ -30,6 +30,7 @@ def main():
         "backup_folder", help="Write the folder path should you want to save backup."
     )
 
+    parser_backup.add_argument("-wd", "--with-drive", action="store_true")
     parser_backup.add_argument(
         "--no-log", help="Mode to don't save the backup log.", action="store_true"
     )
@@ -70,8 +71,10 @@ def main():
         "-lg",
         "--logs-path",
         help="You can change the path of logs. (Default path is minecraft_backup.__path__/data/user_config.json) {}".format(
-            red('Warning! When you use this command you will be lost your log data. I recommend saving the files if you need to do it before doing it. ')
-        )
+            red(
+                "Warning! When you use this command you will be lost your log data. I recommend saving the files if you need to do it before doing it. "
+            )
+        ),
     )
 
     parser_config.add_argument(
