@@ -29,7 +29,8 @@ def main():
     parser_backup.add_argument(
         "backup_folder", help="Write the folder path should you want to save backup."
     )
-
+    
+    parser_backup.add_argument("-wd", "--with-drive", action="store_true")
     parser_backup.add_argument(
         "--no-log", help="Mode to don't save the backup log.", action="store_true"
     )
