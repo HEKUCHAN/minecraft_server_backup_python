@@ -9,6 +9,9 @@ def backup(args):
     BACKUP_FOLDER_PATH: pathlib.Path = pathlib.Path(args.backup_folder)
     IS_NO_LOG: bool = args.no_log
 
+    # Google Drive Args
+    WITH_GOOGLE_DRIVE = args.with_drive
+
     if args.zip:
         COMPRESS_TYPE: CompressType = CompressType.ZIP
     elif args.tar:
@@ -22,7 +25,11 @@ def backup(args):
 
     if is_can_backup_result["result"]:
         files: File = File(
-            MINECRAFT_FOLDER_PATH, BACKUP_FOLDER_PATH, COMPRESS_TYPE, IS_NO_LOG
+            MINECRAFT_FOLDER_PATH,
+            BACKUP_FOLDER_PATH,
+            COMPRESS_TYPE,
+            IS_NO_LOG,
+            WITH_GOOGLE_DRIVE,
         )
     else:
         print(red(is_can_backup_result["message"]))
