@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 {
     "version": 1,
     "logs_path": "default",
     "delete_target": "7d",
     "auto_delete": true,
     "pydrive_yaml_path": ""
+=======
+{
+    "version": 1,
+    "logs_path": "default",
+    "delete_target": "7d",
+    "auto_delete": true
+>>>>>>> 315949479ee1c8b979670d97ff21ae4e3f08fd7c
 }
