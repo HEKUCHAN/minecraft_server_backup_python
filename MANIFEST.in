@@ -1,2 +1,0 @@
-include minecraft_backup/data/*.json
-include minecraft_backup/data/logs/*.log
