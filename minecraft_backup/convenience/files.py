@@ -7,7 +7,6 @@ import textwrap
 from pathlib import Path
 from enum import IntEnum
 from .user_config import Config
-from .google_drive import Drive
 from fabric.colors import green
 from datetime import datetime, timedelta
 from typing import TypeVar, Generic, Dict, Union
@@ -33,7 +32,6 @@ class File(Generic[T]):
         backup_folder: Union[str, Path],
         compress_type: CompressType,
         is_no_log: bool,
-        with_google_drive: bool,
     ):
         if type(minecraft_folder) == str:
             minecraft_folder = Path(minecraft_folder).resolve()
@@ -54,7 +52,6 @@ class File(Generic[T]):
         self.backup_folder: Union[str, Path] = backup_folder
         self.is_no_log: bool = is_no_log
         self.compress_type: CompressType = compress_type
-        self.with_google_drive: bool = with_google_drive
 
     def backup(self):
         if self.compress_type == CompressType.NONE:
@@ -112,10 +109,6 @@ class File(Generic[T]):
                     f"{self.minecraft_folder.name}: Backup zip and tar.gz compress at {self.backup_folder}"
                 )
             print(green("Success to create backup and compressed to zip/tar.gz"))
-
-        # Backup the files in Google Drive
-        if self.with_google_drive:
-            google_drive = Drive()
 
     def auto_delete(self):
         file_target = Config.get_delete_target()
