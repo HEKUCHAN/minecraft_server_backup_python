@@ -115,7 +115,7 @@ class File(Generic[T]):
         # Backup the files in Google Drive
         if self.with_google_drive:
             google_drive = Drive()
-            
+
     def auto_delete(self):
         file_target = Config.get_delete_target()
         times_list = []
