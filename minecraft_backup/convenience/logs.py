@@ -18,4 +18,8 @@ logger: Logger = getLogger(__name__)
 if log_conf["handlers"]["fileHandler"]["filename"] == "to be replaced":
     log_conf["handlers"]["fileHandler"]["filename"] = LOG_FILE_PATH
 
+if not os.path.exists(LOG_FILE_PATH):
+    with open(LOG_FILE_PATH, "x") as f:
+        f.write("")
+
 config.dictConfig(log_conf)
