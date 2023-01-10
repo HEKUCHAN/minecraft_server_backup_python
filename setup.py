@@ -39,7 +39,8 @@ setup(
     install_requires=[
         "pathlib",
         "argparse",
-        "fabric3"
+        "fabric3",
+        "pydrive"
     ],
     long_description=long_description,
     long_description_content_type="text/markdown",
